@@ -22,9 +22,14 @@ let i =0;
 makeSquares();
 
 for (let i=0; i<256; i++) {
+   let randomNumber1 = Math.floor(Math.random()*256);
+   let randomNumber2 = Math.floor(Math.random()*256);
+   let randomNumber3 = Math.floor(Math.random()*256);
+   let randomColor = `rgb(${randomNumber1},${randomNumber2},${randomNumber3})`
    let divSquareColor = document.getElementById(`${i}`);
+
    divSquareColor.addEventListener('mouseover', function (event) {
-      event.target.style.backgroundColor = "black";
+   event.target.style.backgroundColor = `${randomColor}`;
    })
 }
 
@@ -34,5 +39,7 @@ clearButtom.addEventListener('click', function() {
          divSquareColor.style.backgroundColor = "#F4F6F6";
    }
 });
+
+
 
 
