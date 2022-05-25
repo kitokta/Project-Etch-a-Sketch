@@ -14,7 +14,7 @@ let i =0;
     square.id = i;
     container.style.maxHeight = "646px";
     container.style.maxWidth = "646px";
-    container.style.border = "3px solid #A3E4D7";
+    container.style.border = "3px solid #F5AEE8";
     container.appendChild(square);
     i++;
  }

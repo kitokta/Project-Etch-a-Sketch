@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Dekko');
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +6,29 @@
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Dekko', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     background-color: #F4F6F6;
     gap: 48px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #A664B0;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    gap: 36px;
 }
 
 .container-box {
@@ -29,12 +43,21 @@ body {
     padding: 15px;
     border-radius: 15px;
     width: 100px;
-    background-color: #A3E4D7;
-    color: #000 ;
+    background-color: #A664B0;
+    color: #fff ;
     font-weight: bold;
-    border: 2px solid #A3E4D7;
+    border: 2px solid #A664B0;
 }
 
 .clear:hover {
     border: 2px solid #000;
+}
+
+.footer {
+    background-color: #A664B0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F9FAF8;
 }
