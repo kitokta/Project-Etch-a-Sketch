@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,11 +7,14 @@
 }
 
 body {
+    font-family: 'Lato', sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #F4F6F6;
+    gap: 48px;
 }
 
 .container-box {
@@ -18,4 +23,18 @@ body {
     gap: 0;
     box-shadow: 1em;
     border-radius: 0.4em;
+}
+
+.clear {
+    padding: 15px;
+    border-radius: 15px;
+    width: 100px;
+    background-color: #A3E4D7;
+    color: #000 ;
+    font-weight: bold;
+    border: 2px solid #A3E4D7;
+}
+
+.clear:hover {
+    border: 2px solid #000;
 }
