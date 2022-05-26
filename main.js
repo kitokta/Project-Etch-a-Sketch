@@ -63,7 +63,7 @@ eraseButtom.addEventListener('click', function() {
       let divSquareColor = document.getElementById(`${i}`);
       
       divSquareColor.addEventListener('mouseover', function (event) {
-      event.target.style.backgroundColor = `#F4F6F6`;
+      event.target.style.backgroundColor = `#fff`;
       })
    }});
 
