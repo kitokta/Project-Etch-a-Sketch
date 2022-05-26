@@ -86,6 +86,7 @@ colorButtom.addEventListener('click', function() {
    let randomColor = `rgb(${randomNumber1},${randomNumber2},${randomNumber3})`
    let divSquareColor = document.getElementById(`${i}`);
    divSquareColor.addEventListener('mouseover', function (event) {
+      event.target.style.backgroundColor = `${randomColor}`;
    })
     }});
 
