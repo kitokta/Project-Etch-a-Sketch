@@ -6,13 +6,11 @@ let eraseButtom = document.getElementById('eraseButtom');
 let colorButtom = document.getElementById('rcolorButtom');
 let blackButtom = document.getElementById('blackColorButtom')
 let content = document.querySelector('.content');
-let para = document.createElement('h1');
 let titulo = document.getElementById('titulo');
 clearButtom.hidden = true;
 eraseButtom.hidden = true;
 blackButtom.hidden = true;
 colorButtom.hidden = true;
-para.textContent = "Passe o mouse para colorir!";
 container.className = "container-box";
 content.insertBefore(container, buttomContainer);
 
@@ -46,8 +44,6 @@ while (i<((choice*choice))) {
 
    divSquareColor.addEventListener('mouseover', function (event) {
    event.target.style.backgroundColor = `${randomColor}`;
-   colorButtom.style.backgroundColor = `${randomColor}`;
-   colorButtom.style.borderColor = `${randomColor}`;
    })
 }}
 
@@ -90,9 +86,6 @@ colorButtom.addEventListener('click', function() {
    let randomColor = `rgb(${randomNumber1},${randomNumber2},${randomNumber3})`
    let divSquareColor = document.getElementById(`${i}`);
    divSquareColor.addEventListener('mouseover', function (event) {
-   event.target.style.backgroundColor = `${randomColor}`;
-   colorButtom.style.backgroundColor = `${randomColor}`;
-   colorButtom.style.borderColor = `${randomColor}`;
    })
     }});
 
@@ -105,12 +98,10 @@ squareChoice.addEventListener('click', function(choice) {
       return clear,
       clearButtom.hidden = false, 
       eraseButtom.hidden = false, 
-      squareChoice.hidden = false,
+      squareChoice.hidden = true,
       blackButtom.hidden = false,
       colorButtom.hidden = false,
-      content.removeChild(titulo),
-      content.insertBefore(para, content.firstChild),
-      content.removeChild(container),
+      titulo.textContent = "Passe o mouse para colorir!",
       firstTable(choice);
    }
 })
