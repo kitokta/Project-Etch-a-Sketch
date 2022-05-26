@@ -16,36 +16,35 @@ content.insertBefore(container, buttomContainer);
 
 //Gerar primeira tabela
 function firstTable(choice){
-let i =0;
-let containerSize = "600px"
-let squareSize = (parseInt(containerSize)-6)/choice;
-content.insertBefore(container, buttomContainer);
-container.style.maxHeight = `${containerSize}`;
-container.style.maxWidth = `${containerSize}`;
-while (i<((choice*choice))) {
-    let square = document.createElement('div');
-    square.style.height = `${squareSize}px`;
-    square.style.minHeight = `${squareSize}px`;
-    square.style.width = `${squareSize}px`;
-    square.style.minWidth = `${squareSize}px`;
-    square.className = "square";
-    square.id = i;
-    container.style.border = "3px solid #F5AEE8";
-    container.appendChild(square);
-    i++;
- }
+   let i =0;
+   let containerSize = "600px"
+   let squareSize = (parseInt(containerSize)-6)/choice;
+   content.insertBefore(container, buttomContainer);
+   container.style.maxHeight = `${containerSize}`;
+   container.style.maxWidth = `${containerSize}`;
+   while (i<((choice*choice))) {
+      let square = document.createElement('div');
+      square.style.height = `${squareSize}px`;
+      square.style.minHeight = `${squareSize}px`;
+      square.style.width = `${squareSize}px`;
+      square.style.minWidth = `${squareSize}px`;
+      square.className = "square";
+      square.id = i;
+      container.style.border = "3px solid #F5AEE8";
+      container.appendChild(square);
+      i++;
+   }
  //Cores RGB aleatoria on mouse hover
- for (let i=0; i<choice*choice; i++) {
-   let randomNumber1 = Math.floor(Math.random()*256);
-   let randomNumber2 = Math.floor(Math.random()*256);
-   let randomNumber3 = Math.floor(Math.random()*256);
-   let randomColor = `rgb(${randomNumber1},${randomNumber2},${randomNumber3})`
-   let divSquareColor = document.getElementById(`${i}`);
-
-   divSquareColor.addEventListener('mouseover', function (event) {
-   event.target.style.backgroundColor = `${randomColor}`;
-   })
-}}
+   for (let i=0; i<choice*choice; i++) {
+      let randomNumber1 = Math.floor(Math.random()*256);
+      let randomNumber2 = Math.floor(Math.random()*256);
+      let randomNumber3 = Math.floor(Math.random()*256);
+      let randomColor = `rgb(${randomNumber1},${randomNumber2},${randomNumber3})`;
+      let divSquareColor = document.getElementById(`${i}`);
+         divSquareColor.addEventListener('mouseover', function (event) {
+         event.target.style.backgroundColor = `${randomColor}`;
+         })
+   }}
 
 
 let clear = 0;
@@ -61,7 +60,6 @@ clearButtom.addEventListener('click', function() {
 eraseButtom.addEventListener('click', function() {
    for (let i=0; i<clear*clear; i++) {
       let divSquareColor = document.getElementById(`${i}`);
-      
       divSquareColor.addEventListener('mouseover', function (event) {
       event.target.style.backgroundColor = `#fff`;
       })
@@ -80,18 +78,19 @@ blackButtom.addEventListener('click', function() {
 //Botão colorido
 colorButtom.addEventListener('click', function() {
    for (let i=0; i<clear*clear; i++) {
-   let randomNumber1 = Math.floor(Math.random()*256);
-   let randomNumber2 = Math.floor(Math.random()*256);
-   let randomNumber3 = Math.floor(Math.random()*256);
-   let randomColor = `rgb(${randomNumber1},${randomNumber2},${randomNumber3})`
-   let divSquareColor = document.getElementById(`${i}`);
-   divSquareColor.addEventListener('mouseover', function (event) {
-      event.target.style.backgroundColor = `${randomColor}`;
-   })
+      let randomNumber1 = Math.floor(Math.random()*256);
+      let randomNumber2 = Math.floor(Math.random()*256);
+      let randomNumber3 = Math.floor(Math.random()*256);
+      let randomColor = `rgb(${randomNumber1},${randomNumber2},${randomNumber3})`
+      let divSquareColor = document.getElementById(`${i}`);
+      divSquareColor.addEventListener('mouseover', function (event) {
+         event.target.style.backgroundColor = `${randomColor}`;
+      })
     }});
 
 //Escolha do tamanho da nova tabela
 squareChoice.addEventListener('click', function(choice) {
+   container.innerHTML = '';
    choice = prompt("Escolha a quantidade de quadrados por lado desejada (ex: 16 = 16x16):");
    clear = choice;
    if (choice > 100) alert("Escolha uma quantidade menor que 100!");
@@ -99,7 +98,7 @@ squareChoice.addEventListener('click', function(choice) {
       return clear,
       clearButtom.hidden = false, 
       eraseButtom.hidden = false, 
-      squareChoice.hidden = true,
+      squareChoice.hidden = false,
       blackButtom.hidden = false,
       colorButtom.hidden = false,
       titulo.textContent = "Passe o mouse para colorir!",
