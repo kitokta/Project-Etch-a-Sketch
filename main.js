@@ -1,26 +1,35 @@
-let container = document.querySelector('.container-box');
+let container = document.createElement('div');
+let buttomContainer = document.querySelector('.buttom-container')
 let clearButtom = document.getElementById("clearButtom");
 let squareChoice = document.getElementById('choiceButtom');
+let eraseButtom = document.getElementById('eraseButtom');
+let colorButtom = document.getElementById('rcolorButtom');
+let blackButtom = document.getElementById('blackColorButtom')
 let content = document.querySelector('.content');
 let para = document.createElement('h1');
 let titulo = document.getElementById('titulo');
 clearButtom.hidden = true;
+eraseButtom.hidden = true;
+blackButtom.hidden = true;
+colorButtom.hidden = true;
 para.textContent = "Passe o mouse para colorir!";
+container.className = "container-box";
+content.insertBefore(container, buttomContainer);
 
 //Gerar primeira tabela
 function firstTable(choice){
 let i =0;
-maxLenght = choice*40+6;
-container.style.maxHeight = `${maxLenght}px`;
-container.style.maxWidth = `${maxLenght}px`;
-
+let containerSize = "600px"
+let squareSize = (parseInt(containerSize)-6)/choice;
+content.insertBefore(container, buttomContainer);
+container.style.maxHeight = `${containerSize}`;
+container.style.maxWidth = `${containerSize}`;
 while (i<((choice*choice))) {
     let square = document.createElement('div');
-    square.style.border = "0.1px solid #E5E8E8";
-    square.style.height = "40px";
-    square.style.minHeight = "40px";
-    square.style.width = "40px";
-    square.style.minWidth = "40px";
+    square.style.height = `${squareSize}px`;
+    square.style.minHeight = `${squareSize}px`;
+    square.style.width = `${squareSize}px`;
+    square.style.minWidth = `${squareSize}px`;
     square.className = "square";
     square.id = i;
     container.style.border = "3px solid #F5AEE8";
@@ -37,29 +46,72 @@ while (i<((choice*choice))) {
 
    divSquareColor.addEventListener('mouseover', function (event) {
    event.target.style.backgroundColor = `${randomColor}`;
+   colorButtom.style.backgroundColor = `${randomColor}`;
+   colorButtom.style.borderColor = `${randomColor}`;
    })
 }}
 
 
- 
+let clear = 0;
 //Botão de limpar
 clearButtom.addEventListener('click', function() {
-   for (let i=0; i<256; i++) {
+   for (let i=0; i<clear*clear; i++) {
       let divSquareColor = document.getElementById(`${i}`);
-         divSquareColor.style.backgroundColor = "#F4F6F6";
+         divSquareColor.style.backgroundColor = "#fff";
    }
 });
-   
+
+//Botão apagar
+eraseButtom.addEventListener('click', function() {
+   for (let i=0; i<clear*clear; i++) {
+      let divSquareColor = document.getElementById(`${i}`);
+      
+      divSquareColor.addEventListener('mouseover', function (event) {
+      event.target.style.backgroundColor = `#F4F6F6`;
+      })
+   }});
+
+//Botão preto
+blackButtom.addEventListener('click', function() {
+   for (let i=0; i<clear*clear; i++) {
+      let divSquareColor = document.getElementById(`${i}`);
+      
+      divSquareColor.addEventListener('mouseover', function (event) {
+      event.target.style.backgroundColor = `#000`;
+      })
+   }});
+
+//Botão colorido
+colorButtom.addEventListener('click', function() {
+   for (let i=0; i<clear*clear; i++) {
+   let randomNumber1 = Math.floor(Math.random()*256);
+   let randomNumber2 = Math.floor(Math.random()*256);
+   let randomNumber3 = Math.floor(Math.random()*256);
+   let randomColor = `rgb(${randomNumber1},${randomNumber2},${randomNumber3})`
+   let divSquareColor = document.getElementById(`${i}`);
+   divSquareColor.addEventListener('mouseover', function (event) {
+   event.target.style.backgroundColor = `${randomColor}`;
+   colorButtom.style.backgroundColor = `${randomColor}`;
+   colorButtom.style.borderColor = `${randomColor}`;
+   })
+    }});
 
 //Escolha do tamanho da nova tabela
 squareChoice.addEventListener('click', function(choice) {
-   choice = prompt("Escolha a quantidade de quadrados por lado desejada:");
-   if (choice > 32) alert("Escolha uma quantidade menor (até 32)!");
+   choice = prompt("Escolha a quantidade de quadrados por lado desejada (ex: 16 = 16x16):");
+   clear = choice;
+   if (choice > 100) alert("Escolha uma quantidade menor que 100!");
    else {
-      return firstTable(choice), 
+      return clear,
       clearButtom.hidden = false, 
+      eraseButtom.hidden = false, 
+      squareChoice.hidden = false,
+      blackButtom.hidden = false,
+      colorButtom.hidden = false,
       content.removeChild(titulo),
-      content.insertBefore(para, content.firstChild);
+      content.insertBefore(para, content.firstChild),
+      content.removeChild(container),
+      firstTable(choice);
    }
 })
 
